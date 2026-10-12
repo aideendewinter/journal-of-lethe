@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://sk6vkmgom2d5"]
+
+[ext_resource type="PackedScene" uid="uid://ch4mu45s5xs8j" path="res://assets/meshes/floor-01.blend" id="1_e4c46"]
+[ext_resource type="Texture2D" uid="uid://0h5f1ylwl1ey" path="res://assets/textures/material-textures/floor-marble-01.png" id="2_3t0xk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0hm8"]
+albedo_texture = ExtResource("2_3t0xk")
+
+[node name="floor-marble-01" unique_id=407652760 instance=ExtResource("1_e4c46")]
+
+[node name="floor" parent="." index="0" unique_id=1989709402]
+material_override = SubResource("StandardMaterial3D_v0hm8")
