@@ -9,7 +9,7 @@ public partial class DialogueEntry : MarginContainer
 
 	public override void _Ready()
 	{
-		setContent("Vini", "some dialogue line", "[Medium: Success]");
+		//setContent("Vini", "some dialogue line", "[Medium: Success]");
 	}
 
 	public void setContent(string speaker, string dialogue, string passiveCheck = "" )
