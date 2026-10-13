@@ -12,14 +12,14 @@ public partial class DialogueEntry : MarginContainer
 		//setContent("Vini", "some dialogue line", "[Medium: Success]");
 	}
 
-	public void setContent(string speaker, string dialogue, string passiveCheck = "" )
+	public void setContent(Speaker speaker, string dialogue, string passiveCheck = "" )
 	{
-		string result = "[color=#f00]" + speaker + "[/color]";
+		string result = "[color=#f00]" + speaker.speakerName.ToUpper() + "[/color]";
 		if(passiveCheck != "")
 		{
 			result += " [color=#636056]" + passiveCheck + "[/color]";
 		}
-		result += " — " + dialogue;
+		result += " — [indent]" + dialogue;
 		_text.Text = result;
 	}
 }

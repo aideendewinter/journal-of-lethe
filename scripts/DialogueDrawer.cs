@@ -31,7 +31,8 @@ public partial class DialogueDrawer : MarginContainer
 	{
 		DialogueEntry entry = dialogueEntryPrefab.Instantiate<DialogueEntry>();
 		dialogueEntriesContainer.AddChild(entry);
-		entry.setContent("Speaker name", "this is some dialogue, blah blah blah");		
+		
+		entry.setContent(new Speaker(), "this is some dialogue, blah blah blah we are going to go on for quite some time to make sure this text takes up multiple lines at this point.");		
 	}
 
 	//TODO why does this get called twice when we call next?

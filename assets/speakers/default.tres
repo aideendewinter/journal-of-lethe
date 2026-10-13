@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Speaker" format=3 uid="uid://djm0n6j0hacoi"]
+
+[ext_resource type="Script" uid="uid://dyqhbdr2ji6em" path="res://scripts/Speaker.cs" id="1_4dkyw"]
+
+[resource]
+script = ExtResource("1_4dkyw")
+metadata/_custom_type_script = "uid://dyqhbdr2ji6em"
