@@ -5,6 +5,7 @@
 
 [sub_resource type="Theme" id="Theme_sat68"]
 default_font_size = 20
+RichTextLabel/colors/default_color = Color(0.50534403, 0.5053441, 0.50534403, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80oih"]
 bg_color = Color(0, 0, 0, 0.23137255)

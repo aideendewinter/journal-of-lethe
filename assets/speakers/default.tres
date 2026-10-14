@@ -4,4 +4,5 @@
 
 [resource]
 script = ExtResource("1_4dkyw")
+speakerColor = Color(0.7251246, 0.14670023, 0.5248901, 1)
 metadata/_custom_type_script = "uid://dyqhbdr2ji6em"

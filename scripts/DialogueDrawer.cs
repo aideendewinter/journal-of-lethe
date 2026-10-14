@@ -4,6 +4,8 @@ using System;
 public partial class DialogueDrawer : MarginContainer
 {
 
+	const String speakerResourcesFolder = "res://assets/speakers/";
+
 	//const DialogueEntry = preload("res://scenes/dialoge_system/dialogue_entry.tscn"); //in GDSCRIPT shifted to C# becomes 
 	//https://docs.godotengine.org/en/stable/tutorials/best_practices/logic_preferences.html
 	public PackedScene dialogueEntryPrefab = ResourceLoader.Load<PackedScene>("res://scenes/dialoge_system/dialogue_entry.tscn");
@@ -19,7 +21,7 @@ public partial class DialogueDrawer : MarginContainer
 		scrollContainer = (ScrollContainer) dialogueEntriesContainer.GetParentControl();
 		scrollBar = scrollContainer.GetVScrollBar();
 		scrollBar.Changed += OnScrollBarChanged;
-		this.next();
+		this.Next();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,12 +29,30 @@ public partial class DialogueDrawer : MarginContainer
 	{
 	}
 
-	public void next()
+	public void Start(String dialogueName)
+	{
+		//initialize dialogue object
+		//load dialogue based on name
+		this.Next();
+
+	}
+
+	public void Next()
 	{
 		DialogueEntry entry = dialogueEntryPrefab.Instantiate<DialogueEntry>();
 		dialogueEntriesContainer.AddChild(entry);
 		
-		entry.setContent(new Speaker(), "this is some dialogue, blah blah blah we are going to go on for quite some time to make sure this text takes up multiple lines at this point.");		
+		entry.SetContent(this.GetSpeakerResource("default"), "this is some dialogue, blah blah blah we are going to go on for quite some time to make sure this text takes up multiple lines at this point.");		
+	}
+
+	public Speaker GetSpeakerResource(String speakerName)
+	{
+		String speakerPath = speakerResourcesFolder + speakerName+".tres";
+		if(ResourceLoader.Exists(speakerPath))
+		{
+			return (Speaker) ResourceLoader.Load(speakerPath);
+		}
+		return new Speaker();
 	}
 
 	//TODO why does this get called twice when we call next?
@@ -52,7 +72,7 @@ public partial class DialogueDrawer : MarginContainer
 		if (@event.IsActionPressed("ui_accept"))
     	{
 			GD.Print("test...");
-			this.next();
+			this.Next();
 		}
 	}
 }

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://mmyopcad4aee"]
+
+[node name="DialogueOption" type="MarginContainer" unique_id=955838723]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=642539854]
+layout_mode = 2
+
+[node name="optionNumber" type="Label" parent="HBoxContainer" unique_id=2051383692]
+layout_mode = 2
+text = "    1."
+
+[node name="optionLabel" type="Button" parent="HBoxContainer" unique_id=1357163896]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65882355, 0.11764706, 0, 1)
+text = "Option 1"
