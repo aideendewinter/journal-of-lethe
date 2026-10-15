@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 using System;
 
 public partial class DialogueDrawer : MarginContainer
@@ -14,6 +15,7 @@ public partial class DialogueDrawer : MarginContainer
 	public Control dialogueEntriesContainer;
 	public ScrollContainer scrollContainer;
 	public ScrollBar scrollBar;
+	public Dialogue dialogueObject;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -21,7 +23,7 @@ public partial class DialogueDrawer : MarginContainer
 		scrollContainer = (ScrollContainer) dialogueEntriesContainer.GetParentControl();
 		scrollBar = scrollContainer.GetVScrollBar();
 		scrollBar.Changed += OnScrollBarChanged;
-		this.Next();
+		this.Start("test");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,6 +33,8 @@ public partial class DialogueDrawer : MarginContainer
 
 	public void Start(String dialogueName)
 	{
+		dialogueObject = new Dialogue();
+		dialogueObject.LoadDialogue(dialogueName);
 		//initialize dialogue object
 		//load dialogue based on name
 		this.Next();
@@ -39,10 +43,27 @@ public partial class DialogueDrawer : MarginContainer
 
 	public void Next()
 	{
+		Dictionary content = dialogueObject.GetContent();
+
+		switch(content["type"].ToString())
+		{
+			case Dialogue.CONTENT_TYPE_LINE:
+				this.AddLine(content);
+				break;
+			case Dialogue.CONTENT_TYPE_OPTIONS:
+				break;
+			case Dialogue.CONTENT_TYPE_END:
+				GD.Print("dialogue Ended");
+				break;
+		};
+	}
+
+	public void AddLine(Dictionary content)
+	{
 		DialogueEntry entry = dialogueEntryPrefab.Instantiate<DialogueEntry>();
 		dialogueEntriesContainer.AddChild(entry);
 		
-		entry.SetContent(this.GetSpeakerResource("default"), "this is some dialogue, blah blah blah we are going to go on for quite some time to make sure this text takes up multiple lines at this point.");		
+		entry.SetContent(this.GetSpeakerResource(content["speaker"].ToString()	),content["text"].ToString());		
 	}
 
 	public Speaker GetSpeakerResource(String speakerName)

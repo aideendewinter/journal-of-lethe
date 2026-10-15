@@ -25,6 +25,10 @@ window/stretch/aspect="expand"
 
 project/assembly_name="Journal of Lethe"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/clyde/plugin.cfg")
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

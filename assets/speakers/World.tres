@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Speaker" format=3 uid="uid://dnisnuvmajehu"]
+
+[ext_resource type="Script" uid="uid://dyqhbdr2ji6em" path="res://scripts/Speaker.cs" id="1_s0s38"]
+
+[resource]
+script = ExtResource("1_s0s38")
+speakerName = "World"
+speakerColor = Color(0.3137255, 0.78431374, 0.078431375, 1)
+metadata/_custom_type_script = "uid://dyqhbdr2ji6em"
